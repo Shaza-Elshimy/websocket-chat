@@ -12,6 +12,10 @@
             socket.onmessage =(event)=>{
                 console.log(event.data)
             }
+
+            socket.onopen=()=>{
+                socket.send("Hello Server")
+            }
         </script>
     </body>
 

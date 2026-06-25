@@ -7,5 +7,8 @@ const server = new WebSocket.Server({
 
 server.on("connection",(socket)=>{
     console.log("client Connected");
+    socket.on("message",(message)=>{
+        console.log(message.toString());
+    })
     socket.send("welcome");
 });
