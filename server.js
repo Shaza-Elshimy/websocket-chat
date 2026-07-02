@@ -14,9 +14,17 @@ server.on("connection",(socket)=>{
 
     socket.on("message",(message)=>{
         const data =JSON.parse(message);
+
         if(data.type ==="join"){
             socket.username = data.username;
             console.log(socket.username+" joined");
+
+        }else if(data.type =="message"){
+            const chatMessage = `${socket.username}:${data.message}`;
+
+            clients.forEach(client=>{
+                client.send(chatMessage);
+            })
         }
 
         clients.forEach(client=>{
