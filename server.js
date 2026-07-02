@@ -13,6 +13,11 @@ server.on("connection",(socket)=>{
     console.log(clients.length);
 
     socket.on("message",(message)=>{
+        const data =JSON.parse(message);
+        if(data.type ==="join"){
+            socket.username = data.username;
+            console.log(socket.username+" joined");
+        }
 
         clients.forEach(client=>{
             client.send(message.toString())
@@ -21,5 +26,5 @@ server.on("connection",(socket)=>{
    
 
     })
-  
+
 });

@@ -19,6 +19,14 @@
             socket.onmessage =(event)=>{
                 console.log(event.data)
             }
+            
+            socket.onopen=()=>{
+                socket.send(JSON.stringify({
+                    type:"join",
+                    username:"Shaza"
+                }))
+            }
+        
 
         </script>
     </body>
